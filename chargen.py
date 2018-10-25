@@ -191,7 +191,7 @@ def get_character_name(kin: str):
     name_beginnings = NAME_BITS.get('races').get(kin).get('name_beginnings')
     name_middles = NAME_BITS.get('races').get(kin).get('name_middles')
     name_endings = NAME_BITS.get('races').get(kin).get('name_endings')
-
+    ## Very cool closure thingy going on here, very nice spice
     def generate_name():
         name = random.choice(name_beginnings) + random.choice(name_middles) + random.choice(name_endings)
 
@@ -235,6 +235,7 @@ def get_personality():
 def generate_character(requested_kin=None, requested_profession=None):
     t1 = time.time()
     # Get requested kin or choose a random one
+    # (chose kin instead of race since i'm not racist)
     if requested_kin:
         kin = KINS.get(requested_kin)
     else:
@@ -272,7 +273,8 @@ def generate_character(requested_kin=None, requested_profession=None):
                           personality=personality)
 
     t2 = time.time() - t1
-
+    
+    # this is just for my own self esteem improvement
     print(f'character generated in {t2*1000} ms')
 
     return character
